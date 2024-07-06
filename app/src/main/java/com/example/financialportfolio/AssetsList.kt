@@ -11,9 +11,9 @@ class AssetsList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindind = ActivityAssetsListBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_assets_list)
+        setContentView(bindind.root)
 
-        bindind.comebackButton.setOnClickListener{
+        bindind.listComeback.setOnClickListener{
             onBackPressed()
         }
     }

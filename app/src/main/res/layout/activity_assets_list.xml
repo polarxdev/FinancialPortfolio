@@ -36,10 +36,10 @@
         android:layout_height="1dp"
         android:background="?android:attr/listDivider"
         android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/comeback_button" />
+        app:layout_constraintBottom_toTopOf="@+id/list_comeback" />
 
     <android.widget.Button
-        android:id="@+id/comeback_button"
+        android:id="@+id/list_comeback"
         android:layout_width="270dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
