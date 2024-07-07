@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">FinancialPortfolio</string>
+    <string name="bottom_nav_home">Home</string>
+    <string name="bottom_nav_assets">Assets</string>
+    <string name="assets_list_title">Assets list</string>
 </resources>

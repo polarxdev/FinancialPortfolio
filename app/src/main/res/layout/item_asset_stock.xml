@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Stock Name -->
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold"
+        tools:text="Stock Name" />
+
+    <!-- Stock Amount -->
+    <TextView
+        android:id="@+id/amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:text="Amount: 0" />
+
+    <!-- Stock Ticker -->
+    <TextView
+        android:id="@+id/ticker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:text="Ticker: TICK" />
+
+    <!-- Country -->
+    <TextView
+        android:id="@+id/country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:text="Country: USA" />
+
+    <TextView
+        android:id="@+id/sector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:text="sector" />
+</LinearLayout>
