@@ -13,6 +13,12 @@
         <action
             android:id="@+id/action_homeFragment_to_assetsListFragment"
             app:destination="@id/assetsListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_portfolioFragment"
+            app:destination="@id/portfolioFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 
     <fragment
@@ -20,4 +26,14 @@
         android:name="com.example.financialportfolio.presentation.assetsList.AssetsListFragment"
         android:label="Assets List"
         tools:layout="@layout/fragment_assets_list" />
+    <fragment
+        android:id="@+id/portfolioFragment"
+        android:name="com.example.financialportfolio.presentation.portfolio.PortfolioFragment"
+        android:label="PortfolioFragment"
+        tools:layout="@layout/fragment_portfolio"/>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.financialportfolio.presentation.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings"/>
 </navigation>

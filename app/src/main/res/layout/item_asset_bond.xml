@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/text_color"
         android:textStyle="bold"
         tools:text="Name" />
 
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/text_color"
         tools:text="Amount" />
 
     <TextView
@@ -30,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/text_color"
         tools:text="Maturity Date" />
 
     <TextView
@@ -38,7 +41,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        tools:text="Country: USA" />
+        android:textColor="@color/text_color"
+        tools:text="Country" />
 
     <TextView
         android:id="@+id/sector"
@@ -46,5 +50,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/text_color"
         tools:text="Sector" />
 </LinearLayout>

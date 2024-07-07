@@ -15,9 +15,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val binding = FragmentHomeBinding.bind(view)
         fragmentHomeBinding = binding
 
-        binding.toAssetsListButton.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAssetsListFragment())
+        with(binding) {
+            toAssetsListButton.setOnClickListener {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAssetsListFragment())
+            }
+            toPortfolioButton.setOnClickListener {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPortfolioFragment())
+            }
+            toSettingsButton.setOnClickListener {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSettingsFragment())
+            }
         }
+
     }
 
     override fun onDestroyView() {

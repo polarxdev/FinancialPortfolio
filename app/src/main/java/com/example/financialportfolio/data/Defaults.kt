@@ -5,9 +5,8 @@ import com.example.financialportfolio.domain.entity.Cash
 import com.example.financialportfolio.domain.entity.Stock
 import com.example.financialportfolio.domain.entity.Bond
 import java.time.LocalDate
-import java.util.Date
 
-object defaultAssetsList {
+object DefaultAssetsList {
     private val assetsList = listOf(
         Cash(
             id = 1,

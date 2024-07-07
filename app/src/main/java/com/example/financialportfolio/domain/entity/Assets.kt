@@ -1,7 +1,6 @@
 package com.example.financialportfolio.domain.entity
 
 import java.time.LocalDate
-import java.util.Date
 
 data class AssetMeta(
     val country: String,

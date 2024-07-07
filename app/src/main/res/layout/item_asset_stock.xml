@@ -7,42 +7,42 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Stock Name -->
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/text_color"
         android:textStyle="bold"
-        tools:text="Stock Name" />
+        tools:text="Name" />
 
-    <!-- Stock Amount -->
     <TextView
         android:id="@+id/amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        tools:text="Amount: 0" />
+        android:textColor="@color/text_color"
+        tools:text="Amount" />
 
-    <!-- Stock Ticker -->
     <TextView
         android:id="@+id/ticker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        tools:text="Ticker: TICK" />
+        android:textColor="@color/text_color"
+        tools:text="Ticker" />
 
-    <!-- Country -->
     <TextView
         android:id="@+id/country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        tools:text="Country: USA" />
+        android:textColor="@color/text_color"
+        tools:text="Country" />
 
     <TextView
         android:id="@+id/sector"
@@ -50,5 +50,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        tools:text="sector" />
+        android:textColor="@color/text_color"
+        tools:text="Sector" />
 </LinearLayout>

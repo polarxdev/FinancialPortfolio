@@ -7,42 +7,41 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Asset Name -->
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/text_color"
         android:textStyle="bold"
         tools:text="Cash" />
 
-    <!-- Cash Amount -->
     <TextView
         android:id="@+id/amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/text_color"
         tools:text="Amount" />
 
-    <!-- Cash Currency -->
     <TextView
         android:id="@+id/currency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/text_color"
         tools:text="Currency" />
 
-    <!-- Country -->
     <TextView
         android:id="@+id/country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginBottom="4dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/text_color"
         tools:text="Country" />
 
     <TextView
@@ -51,5 +50,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/text_color"
         tools:text="Sector" />
 </LinearLayout>

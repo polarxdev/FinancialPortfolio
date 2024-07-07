@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">FinancialPortfolio</string>
-    <string name="bottom_nav_home">Home</string>
-    <string name="bottom_nav_assets">Assets</string>
-    <string name="assets_list_title">Assets list</string>
+    <string name="home">Home</string>
+    <string name="deposit">Deposit</string>
+    <string name="list_btn">List</string>
+    <string name="back_btn">Back</string>
+    <string name="history">History</string>
+    <string name="assets">Assets</string>
+    <string name="portfolio">Portfolio</string>
+    <string name="user_assets">Your Assets</string>
+    <string name="portfolio_btn">Portfolio</string>
+    <string name="settings_btn">Settings</string>
+    <string name="settings">Settings</string>
 </resources>
