@@ -10,12 +10,12 @@ import com.example.financialportfolio.databinding.FragmentPortfolioBinding
 class PortfolioFragment : Fragment(R.layout.fragment_portfolio) {
 
     private var _binding: FragmentPortfolioBinding? = null
+    private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = FragmentPortfolioBinding.bind(view)
-        _binding = binding
 
+        _binding = FragmentPortfolioBinding.bind(view)
         binding.comebackButton.setOnClickListener {
             findNavController().navigateUp()
         }

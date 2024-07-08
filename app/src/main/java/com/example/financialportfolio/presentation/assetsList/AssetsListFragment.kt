@@ -15,20 +15,18 @@ import com.example.financialportfolio.presentation.rv.AssetListAdapter
 class AssetsListFragment : Fragment(R.layout.fragment_assets_list) {
 
     private var _binding: FragmentAssetsListBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: AssetsListViewModel by viewModels()
 
-    private lateinit var adapter: AssetListAdapter
-    private lateinit var recyclerView: RecyclerView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = FragmentAssetsListBinding.bind(view)
-        _binding = binding
 
-        recyclerView = binding.assetsList
+        _binding = FragmentAssetsListBinding.bind(view)
+
+        val recyclerView = binding.assetsList
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
-        adapter = AssetListAdapter {
+        val adapter = AssetListAdapter {
             Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show()
         }
         recyclerView.adapter = adapter

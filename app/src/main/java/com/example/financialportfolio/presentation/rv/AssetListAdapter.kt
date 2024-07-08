@@ -8,6 +8,7 @@ import com.example.financialportfolio.domain.entity.Asset
 import com.example.financialportfolio.domain.entity.Bond
 import com.example.financialportfolio.domain.entity.Cash
 import com.example.financialportfolio.domain.entity.Stock
+import com.example.financialportfolio.presentation.rv.AssetType.Companion.toLayoutType
 
 
 enum class AssetType(val layoutResId: Int) {
@@ -16,8 +17,8 @@ enum class AssetType(val layoutResId: Int) {
     STOCK(R.layout.item_asset_stock);
 
     companion object {
-        fun getAssetType(asset: Asset): AssetType {
-            return when (asset) {
+        fun Asset.toLayoutType(): AssetType {
+            return when (this) {
                 is Cash -> CASH
                 is Bond -> BOND
                 is Stock -> STOCK
@@ -42,12 +43,12 @@ class AssetListAdapter(
         diffResult.dispatchUpdatesTo(this)
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return AssetType.getAssetType(items[position]).layoutResId
-    }
+    override fun getItemViewType(position: Int): Int =
+        items[position].toLayoutType().layoutResId
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AssetViewHolder<*> {
-        return AssetViewHolder.newInstance(parent, viewType)
+        return ViewHolderFactoryProvider.newInstance(parent, viewType)
     }
 
     override fun onBindViewHolder(holder: AssetViewHolder<*>, position: Int) {
@@ -60,7 +61,6 @@ class AssetListAdapter(
         }
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
+    override fun getItemCount() = items.size
+
 }

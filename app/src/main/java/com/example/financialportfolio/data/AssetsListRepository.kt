@@ -6,7 +6,7 @@ class AssetsListRepository {
     private var assets = listOf<Asset>()
 
     init {
-        assets = DefaultAssetsList.getDefaultAssetsList()
+        assets = DefaultAssetsList.getAssetsList()
     }
 
     fun getAssets(): List<Asset> {

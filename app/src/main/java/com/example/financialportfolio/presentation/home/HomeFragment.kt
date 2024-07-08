@@ -8,13 +8,13 @@ import com.example.financialportfolio.R
 import com.example.financialportfolio.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
-    private var fragmentHomeBinding: FragmentHomeBinding? = null
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = FragmentHomeBinding.bind(view)
-        fragmentHomeBinding = binding
 
+        _binding = FragmentHomeBinding.bind(view)
         with(binding) {
             toAssetsListButton.setOnClickListener {
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAssetsListFragment())
@@ -31,6 +31,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        fragmentHomeBinding = null
+        _binding = null
     }
 }

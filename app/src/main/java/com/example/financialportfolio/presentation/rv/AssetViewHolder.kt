@@ -13,32 +13,50 @@ import com.example.financialportfolio.domain.entity.Bond
 import com.example.financialportfolio.domain.entity.Cash
 import com.example.financialportfolio.domain.entity.Stock
 
-abstract class AssetViewHolder<T : Asset>(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+abstract class AssetViewHolder<T : Asset>(itemView: View) : RecyclerView.ViewHolder(itemView) {
     abstract fun bind(model: T, onClick: (T) -> Unit)
 
-    companion object {
-        fun newInstance(parent: ViewGroup, viewType: Int): AssetViewHolder<*> {
-            val layoutInflater = LayoutInflater.from(parent.context)
-            return when (viewType) {
-                R.layout.item_asset_cash -> {
-                    val binding = ItemAssetCashBinding.inflate(layoutInflater, parent, false)
-                    AssetCashViewHolder(binding)
-                }
+}
 
-                R.layout.item_asset_stock -> {
-                    val binding = ItemAssetStockBinding.inflate(layoutInflater, parent, false)
-                    AssetStockViewHolder(binding)
-                }
+interface ViewHolderFactory {
+    fun create(parent: ViewGroup): AssetViewHolder<*>
+}
 
-                R.layout.item_asset_bond -> {
-                    val binding = ItemAssetBondBinding.inflate(layoutInflater, parent, false)
-                    AssetBondViewHolder(binding)
-                }
+class CashViewHolderFactory : ViewHolderFactory {
+    override fun create(parent: ViewGroup): AssetViewHolder<*> {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = ItemAssetCashBinding.inflate(layoutInflater, parent, false)
+        return AssetCashViewHolder(binding)
+    }
+}
 
-                else -> throw IllegalArgumentException("Invalid view type")
-            }
-        }
+class StockViewHolderFactory : ViewHolderFactory {
+    override fun create(parent: ViewGroup): AssetViewHolder<*> {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = ItemAssetStockBinding.inflate(layoutInflater, parent, false)
+        return AssetStockViewHolder(binding)
+    }
+}
+
+class BondViewHolderFactory : ViewHolderFactory {
+    override fun create(parent: ViewGroup): AssetViewHolder<*> {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = ItemAssetBondBinding.inflate(layoutInflater, parent, false)
+        return AssetBondViewHolder(binding)
+    }
+}
+
+object ViewHolderFactoryProvider {
+    private val factories = mapOf(
+        R.layout.item_asset_cash to CashViewHolderFactory(),
+        R.layout.item_asset_stock to StockViewHolderFactory(),
+        R.layout.item_asset_bond to BondViewHolderFactory(),
+    )
+
+    fun newInstance(parent: ViewGroup, viewType: Int): AssetViewHolder<*> {
+        val factory = factories[viewType] ?: throw IllegalArgumentException("Invalid view type")
+        return factory.create(parent)
     }
 }
 
@@ -50,7 +68,6 @@ class AssetCashViewHolder(private val binding: ItemAssetCashBinding) :
         with(binding) {
             model.let {
                 name.text = model.name
-                amount.text = model.amount.toString()
                 currency.text = model.currency
                 country.text = model.meta.country
                 sector.text = model.meta.sector
@@ -68,7 +85,6 @@ class AssetBondViewHolder(private val binding: ItemAssetBondBinding) :
         with(binding) {
             model.let {
                 name.text = model.name
-                amount.text = model.amount.toString()
                 maturityDate.text = model.maturityDate.toString()
                 country.text = model.meta.country
                 sector.text = model.meta.sector
@@ -86,7 +102,6 @@ class AssetStockViewHolder(private val binding: ItemAssetStockBinding) :
         with(binding) {
             model.let {
                 name.text = model.name
-                amount.text = model.amount.toString()
                 ticker.text = model.ticker
                 country.text = model.meta.country
                 sector.text = model.meta.sector
