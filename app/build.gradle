@@ -39,7 +39,7 @@ android {
 
 dependencies {
     implementation libs.androidx.core.ktx.v190
-    implementation libs.androidx.appcompat.v161
+    implementation libs.androidx.appcompat.version
     implementation libs.material.v180
     implementation libs.androidx.activity.ktx
     implementation libs.androidx.constraintlayout
