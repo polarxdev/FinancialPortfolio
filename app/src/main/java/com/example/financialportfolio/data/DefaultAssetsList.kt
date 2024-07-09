@@ -1,9 +1,9 @@
 package com.example.financialportfolio.data
 
 import com.example.financialportfolio.domain.entity.AssetMeta
+import com.example.financialportfolio.domain.entity.Bond
 import com.example.financialportfolio.domain.entity.Cash
 import com.example.financialportfolio.domain.entity.Stock
-import com.example.financialportfolio.domain.entity.Bond
 import java.time.LocalDate
 
 object DefaultAssetsList {
@@ -12,7 +12,7 @@ object DefaultAssetsList {
             id = 1,
             name = "Cash in USD",
             meta = AssetMeta(country = "USA", sector = "Finances"),
-            currency = "USD",
+            currency = "USD"
         ),
         Cash(
             id = 2,
