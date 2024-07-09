@@ -10,7 +10,7 @@ data class AssetMeta(
 abstract class Asset(
     open val id: Int,
     open val name: String,
-    open val meta: AssetMeta,
+    open val meta: AssetMeta
 )
 
 data class Cash(
@@ -24,7 +24,7 @@ data class Stock(
     override val id: Int,
     override val name: String,
     override val meta: AssetMeta,
-    val ticker: String,
+    val ticker: String
 ) : Asset(id, name, meta)
 
 data class Bond(

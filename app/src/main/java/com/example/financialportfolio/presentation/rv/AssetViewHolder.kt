@@ -13,10 +13,8 @@ import com.example.financialportfolio.domain.entity.Bond
 import com.example.financialportfolio.domain.entity.Cash
 import com.example.financialportfolio.domain.entity.Stock
 
-
 abstract class AssetViewHolder<T : Asset>(itemView: View) : RecyclerView.ViewHolder(itemView) {
     abstract fun bind(model: T, onClick: (T) -> Unit)
-
 }
 
 interface ViewHolderFactory {
@@ -51,7 +49,7 @@ object ViewHolderFactoryProvider {
     private val factories = mapOf(
         R.layout.item_asset_cash to CashViewHolderFactory(),
         R.layout.item_asset_stock to StockViewHolderFactory(),
-        R.layout.item_asset_bond to BondViewHolderFactory(),
+        R.layout.item_asset_bond to BondViewHolderFactory()
     )
 
     fun newInstance(parent: ViewGroup, viewType: Int): AssetViewHolder<*> {
@@ -59,7 +57,6 @@ object ViewHolderFactoryProvider {
         return factory.create(parent)
     }
 }
-
 
 class AssetCashViewHolder(private val binding: ItemAssetCashBinding) :
     AssetViewHolder<Cash>(binding.root) {
@@ -111,4 +108,3 @@ class AssetStockViewHolder(private val binding: ItemAssetStockBinding) :
         }
     }
 }
-

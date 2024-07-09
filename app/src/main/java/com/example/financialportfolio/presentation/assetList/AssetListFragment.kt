@@ -1,4 +1,4 @@
-package com.example.financialportfolio.presentation.assetsList
+package com.example.financialportfolio.presentation.assetList
 
 import android.os.Bundle
 import android.view.View
@@ -7,17 +7,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.financialportfolio.R
 import com.example.financialportfolio.databinding.FragmentAssetsListBinding
 import com.example.financialportfolio.presentation.rv.AssetListAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
-class AssetsListFragment : Fragment(R.layout.fragment_assets_list) {
+@AndroidEntryPoint
+class AssetListFragment : Fragment(R.layout.fragment_assets_list) {
 
     private var _binding: FragmentAssetsListBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: AssetsListViewModel by viewModels()
-
+    private val viewModel: AssetListViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
