@@ -22,6 +22,6 @@ class AssetListViewModel
     }
 
     private fun loadAssets() {
-        _model.value = getAssetListUseCase.execute()
+        _model.value = getAssetListUseCase()
     }
 }

@@ -15,6 +15,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = FragmentHomeBinding.bind(view)
+
         with(binding) {
             toAssetsListButton.setOnClickListener {
                 findNavController().navigate(

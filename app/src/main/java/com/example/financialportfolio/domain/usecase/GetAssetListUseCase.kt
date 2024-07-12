@@ -4,7 +4,7 @@ import com.example.financialportfolio.domain.entity.Asset
 import com.example.financialportfolio.domain.repository.AssetListRepository
 
 class GetAssetListUseCase(private val assetListRepository: AssetListRepository) {
-    fun execute(): List<Asset> {
+    operator fun invoke(): List<Asset> {
         return assetListRepository.getAssets()
     }
 }

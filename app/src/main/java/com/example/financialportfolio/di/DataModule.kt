@@ -4,25 +4,25 @@ import com.example.financialportfolio.data.AssetListRepositoryImpl
 import com.example.financialportfolio.data.datasource.AssetListDataSource
 import com.example.financialportfolio.data.datasource.local.LocalAssetListDataSource
 import com.example.financialportfolio.domain.repository.AssetListRepository
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class DataModule {
+interface DataModule {
 
-    @Provides
+    @Binds
     @Singleton
-    fun provideAssetListRepository(dataSource: AssetListDataSource): AssetListRepository {
-        return AssetListRepositoryImpl(dataSource = dataSource)
-    }
+    fun bindAssetListRepository(
+        repositoryImpl: AssetListRepositoryImpl
+    ): AssetListRepository
 
-    @Provides
+    @Binds
     @Singleton
-    fun provideAssetListDataSource(): AssetListDataSource {
-        return LocalAssetListDataSource()
-    }
+    fun bindAssetListDataSource(
+        dataSourceImpl: LocalAssetListDataSource
+    ): AssetListDataSource
 }

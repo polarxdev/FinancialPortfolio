@@ -1,5 +1,5 @@
 [versions]
-agp = "8.4.2"
+agp = "8.4.1"
 appcompatVersion = "1.6.1"
 gradle = "8.0.2"
 hiltAndroidGradlePlugin = "2.51.1"
@@ -38,4 +38,3 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-

@@ -16,7 +16,8 @@ class PortfolioFragment : Fragment(R.layout.fragment_portfolio) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = FragmentPortfolioBinding.bind(view)
-        binding.comebackButton.setOnClickListener {
+
+        binding.backIcon.setOnClickListener {
             findNavController().navigateUp()
         }
     }

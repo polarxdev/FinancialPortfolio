@@ -238,6 +238,7 @@ formatting:
     active: false
     autoCorrect: false
   Indentation:
+    excludes: ["**/build/**"]
     active: true
     autoCorrect: false
     indentSize: 4
@@ -516,7 +517,7 @@ style:
     maxJumpCount: 1
   MagicNumber:
     active: true
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**', '**/*.Test.kt', '**/*.Spec.kt', '**/*.Spek.kt']
+    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**', '**/*.Test.kt', '**/*.Spec.kt', '**/*.Spek.kt', '**/build.gradle.kts', '**/build/**']
     ignoreNumbers: ['-1', '0', '1', '2']
     ignoreHashCodeFunction: true
     ignorePropertyDeclaration: true

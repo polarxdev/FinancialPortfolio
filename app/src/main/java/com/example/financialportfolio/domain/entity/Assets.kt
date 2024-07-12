@@ -7,7 +7,7 @@ data class AssetMeta(
     val sector: String
 )
 
-abstract class Asset(
+open class Asset(
     open val id: Int,
     open val name: String,
     open val meta: AssetMeta

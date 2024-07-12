@@ -17,7 +17,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
         _binding = FragmentSettingsBinding.bind(view)
 
-        binding.comebackButton.setOnClickListener {
+        binding.backIcon.setOnClickListener {
             findNavController().navigateUp()
         }
     }

@@ -8,29 +8,6 @@
     android:background="@color/background">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_medium"
-        android:gravity="center"
-        android:paddingVertical="15dp"
-        android:text="@string/home"
-        android:textColor="@color/text_color"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="0dp"
-        android:layout_height="2dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
         android:id="@+id/deposit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -41,7 +18,7 @@
         android:textColor="@color/text_color"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
         android:id="@+id/textView4"
@@ -56,6 +33,38 @@
         app:layout_constraintTop_toBottomOf="@+id/deposit"
         tools:text="1000$" />
 
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+        </Toolbar>
+    </Toolbar>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <View
         android:id="@+id/divider"
         android:layout_width="0dp"
@@ -69,11 +78,11 @@
         android:id="@+id/to_assets_list_button"
         android:layout_width="120dp"
         android:layout_height="60dp"
+        android:layout_marginStart="10dp"
         android:background="@drawable/list_btn_shape"
         android:fontFamily="@font/montserrat_medium"
         android:text="@string/list_btn"
         android:textColor="@color/background"
-        android:layout_marginStart="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
@@ -95,9 +104,9 @@
         android:id="@+id/to_settings_button"
         android:layout_width="120dp"
         android:layout_height="60dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/list_btn_shape"
         android:fontFamily="@font/montserrat_medium"
-        android:layout_marginEnd="10dp"
         android:text="@string/settings_btn"
         android:textColor="@color/background"
         app:layout_constraintBottom_toBottomOf="parent"

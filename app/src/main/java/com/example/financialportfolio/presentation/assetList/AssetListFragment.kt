@@ -6,10 +6,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.financialportfolio.R
 import com.example.financialportfolio.databinding.FragmentAssetsListBinding
 import com.example.financialportfolio.presentation.rv.AssetListAdapter
+import com.example.financialportfolio.presentation.rv.delegate.AdapterDelegatesManager
+import com.example.financialportfolio.presentation.rv.delegate.AssetBondListItemAdapterDelegate
+import com.example.financialportfolio.presentation.rv.delegate.AssetCashListItemAdapterDelegate
+import com.example.financialportfolio.presentation.rv.delegate.AssetStockListItemAdapterDelegate
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,17 +28,40 @@ class AssetListFragment : Fragment(R.layout.fragment_assets_list) {
         _binding = FragmentAssetsListBinding.bind(view)
 
         val recyclerView = binding.assetsList
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        val adapter = AssetListAdapter {
-            Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show()
-        }
+        val adapter = AssetListAdapter(
+            items = listOf(),
+            delegatesManager = AdapterDelegatesManager(
+                AssetCashListItemAdapterDelegate {
+                    Toast.makeText(
+                        context,
+                        "Cash item clicked",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                },
+                AssetBondListItemAdapterDelegate {
+                    Toast.makeText(
+                        context,
+                        "Bond item clicked",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                },
+                AssetStockListItemAdapterDelegate {
+                    Toast.makeText(
+                        context,
+                        "Stock item clicked",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            )
+        )
+
         recyclerView.adapter = adapter
 
         viewModel.model.observe(viewLifecycleOwner) { assets ->
             adapter.submitItems(assets)
         }
 
-        binding.comebackButton.setOnClickListener {
+        binding.backIcon.setOnClickListener {
             findNavController().navigateUp()
         }
     }
