@@ -37,6 +37,10 @@ class AssetListFragment : Fragment(R.layout.fragment_assets_list) {
                         "Cash item clicked",
                         Toast.LENGTH_SHORT
                     ).show()
+                    findNavController().navigate(
+                        AssetListFragmentDirections
+                            .actionAssetsListFragmentToAssetDetailFragment(it.id)
+                    )
                 },
                 AssetBondListItemAdapterDelegate {
                     Toast.makeText(
@@ -44,6 +48,10 @@ class AssetListFragment : Fragment(R.layout.fragment_assets_list) {
                         "Bond item clicked",
                         Toast.LENGTH_SHORT
                     ).show()
+                    findNavController().navigate(
+                        AssetListFragmentDirections
+                            .actionAssetsListFragmentToAssetDetailFragment(it.id)
+                    )
                 },
                 AssetStockListItemAdapterDelegate {
                     Toast.makeText(
@@ -51,6 +59,10 @@ class AssetListFragment : Fragment(R.layout.fragment_assets_list) {
                         "Stock item clicked",
                         Toast.LENGTH_SHORT
                     ).show()
+                    findNavController().navigate(
+                        AssetListFragmentDirections
+                            .actionAssetsListFragmentToAssetDetailFragment(it.id)
+                    )
                 }
             )
         )
