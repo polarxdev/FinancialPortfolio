@@ -2,6 +2,7 @@ package com.example.financialportfolio.presentation.assetDetail
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -27,11 +28,12 @@ class AssetDetailFragment : Fragment(R.layout.fragment_asset_detail) {
 
         val args: AssetDetailFragmentArgs by navArgs()
         val id = args.Id
-
-        viewModel.model.observe(viewLifecycleOwner) { assets ->
-            var asset = assets.get(id.dec())
-
+        try{
+            val asset = viewModel.getAssetById(id.dec())
             bindInfo(asset)
+        }catch (e: Exception){
+            Toast.makeText(context, "ssss", Toast.LENGTH_SHORT).show()
+            findNavController().navigateUp()
         }
 
         binding.backIcon.setOnClickListener {

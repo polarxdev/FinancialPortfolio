@@ -32,33 +32,18 @@ class AssetListFragment : Fragment(R.layout.fragment_assets_list) {
             items = listOf(),
             delegatesManager = AdapterDelegatesManager(
                 AssetCashListItemAdapterDelegate {
-                    Toast.makeText(
-                        context,
-                        "Cash item clicked",
-                        Toast.LENGTH_SHORT
-                    ).show()
                     findNavController().navigate(
                         AssetListFragmentDirections
                             .actionAssetsListFragmentToAssetDetailFragment(it.id)
                     )
                 },
                 AssetBondListItemAdapterDelegate {
-                    Toast.makeText(
-                        context,
-                        "Bond item clicked",
-                        Toast.LENGTH_SHORT
-                    ).show()
                     findNavController().navigate(
                         AssetListFragmentDirections
                             .actionAssetsListFragmentToAssetDetailFragment(it.id)
                     )
                 },
                 AssetStockListItemAdapterDelegate {
-                    Toast.makeText(
-                        context,
-                        "Stock item clicked",
-                        Toast.LENGTH_SHORT
-                    ).show()
                     findNavController().navigate(
                         AssetListFragmentDirections
                             .actionAssetsListFragmentToAssetDetailFragment(it.id)
