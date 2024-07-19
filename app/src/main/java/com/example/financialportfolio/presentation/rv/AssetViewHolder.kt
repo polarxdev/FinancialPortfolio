@@ -1,7 +1,10 @@
 package com.example.financialportfolio.presentation.rv
 
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.financialportfolio.R
 import com.example.financialportfolio.databinding.ItemAssetBondBinding
 import com.example.financialportfolio.databinding.ItemAssetCashBinding
 import com.example.financialportfolio.databinding.ItemAssetStockBinding
@@ -61,13 +64,29 @@ class AssetStockViewHolder(itemView: View) : ViewHolder(itemView) {
 
 class PortfolioAssetViewHolder(itemView: View) : ViewHolder(itemView) {
     private val binding: ItemPortfolioAssetBinding = ItemPortfolioAssetBinding.bind(itemView)
-    fun bind(model: PortfolioAsset, onClick: (PortfolioAsset) -> Unit) {
+    fun bind(model: PortfolioAsset, onMenuItemClick: (PortfolioAsset, MenuItem) -> Unit) {
         with(binding) {
             model.let {
-                name.text = model.id.toString()
+                name.text = model.asset.name
 
-                itemView.setOnClickListener { onClick(model) }
+                menu.setOnClickListener { view ->
+                    showPopupMenu(view, model, onMenuItemClick)
+                }
             }
         }
+    }
+
+    private fun showPopupMenu(
+        view: View,
+        asset: PortfolioAsset,
+        onMenuItemClick: (PortfolioAsset, MenuItem) -> Unit
+    ) {
+        val popupMenu = PopupMenu(view.context, view)
+        popupMenu.inflate(R.menu.portfolio_item_menu)
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            onMenuItemClick(asset, menuItem)
+            true
+        }
+        popupMenu.show()
     }
 }

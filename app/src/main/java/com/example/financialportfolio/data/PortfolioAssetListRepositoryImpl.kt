@@ -7,12 +7,16 @@ import javax.inject.Inject
 
 class PortfolioAssetListRepositoryImpl @Inject constructor(
     private val dataSource: PortfolioAssetListDataSource
-): PortfolioAssetsListRepository {
+) : PortfolioAssetsListRepository {
     override fun getPortfolioAssets(): List<PortfolioAsset> {
         return dataSource.getPortfolioAssets()
     }
 
-    override fun getPortfolioAssetById(id: Int): PortfolioAsset {
-        return dataSource.getPortfolioAssetById(id)
+    override fun addPortfolioAsset(asset: PortfolioAsset) {
+        dataSource.addPortfolioAsset(asset)
+    }
+
+    override fun deletePortfolioAsset(asset: PortfolioAsset) {
+        dataSource.deletePortfolioAsset(asset)
     }
 }

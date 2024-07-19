@@ -58,7 +58,7 @@ class AssetListFragment : Fragment(R.layout.fragment_assets_list) {
         recyclerView.adapter = adapter
 
         viewModel.model.observe(viewLifecycleOwner) { assets ->
-            adapter.submitItems(assets)
+            assets?.let { adapter.submitItems(assets) }
         }
 
         binding.backIcon.setOnClickListener {

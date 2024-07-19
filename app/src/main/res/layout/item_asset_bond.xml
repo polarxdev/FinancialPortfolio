@@ -44,10 +44,4 @@
         android:textColor="@color/text_color"
         tools:text="Sector" />
 
-    <ImageView
-        android:id="@+id/add_to_port_icon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/plus_icon"/>
-
 </LinearLayout>

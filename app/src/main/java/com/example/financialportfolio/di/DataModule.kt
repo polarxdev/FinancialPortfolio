@@ -41,5 +41,4 @@ interface DataModule {
     fun bindPortfolioAssetListDataSource(
         dataSourceImpl: LocalPortfolioListDataSource
     ): PortfolioAssetListDataSource
-
 }
