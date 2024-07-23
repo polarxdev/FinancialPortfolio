@@ -57,7 +57,7 @@ class AssetListFragment : Fragment(R.layout.fragment_assets_list) {
 
         recyclerView.adapter = adapter
 
-        viewModel.model.observe(viewLifecycleOwner) { assets ->
+        viewModel.assetList.observe(viewLifecycleOwner) { assets ->
             assets?.let { adapter.submitItems(assets) }
         }
 

@@ -3,7 +3,7 @@ package com.example.financialportfolio.presentation.rv
 import androidx.recyclerview.widget.DiffUtil
 import com.example.financialportfolio.domain.entity.PortfolioAsset
 
-class PortfolioAssetDiffUtilCallback (
+class PortfolioAssetDiffUtilCallback(
     private val oldList: List<PortfolioAsset>,
     private val newList: List<PortfolioAsset>
 ) : DiffUtil.Callback() {

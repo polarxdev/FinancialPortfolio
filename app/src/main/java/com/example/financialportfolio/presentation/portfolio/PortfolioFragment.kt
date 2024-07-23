@@ -23,8 +23,6 @@ class PortfolioFragment : Fragment(R.layout.fragment_portfolio) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentPortfolioBinding.bind(view)
 
-        val recyclerView = binding.portfolioAssetList
-
         val adapter = PortfolioAssetListAdapter(
             items = listOf(),
             delegatesManager = AdapterDelegatesManager(
@@ -38,9 +36,9 @@ class PortfolioFragment : Fragment(R.layout.fragment_portfolio) {
             )
         )
 
-        recyclerView.adapter = adapter
+        binding.portfolioAssetList.adapter = adapter
 
-        viewModel.model.observe(viewLifecycleOwner) { assets ->
+        viewModel.portfolioAssetList.observe(viewLifecycleOwner) { assets ->
             assets?.let {
                 adapter.submitItems(it)
             }
