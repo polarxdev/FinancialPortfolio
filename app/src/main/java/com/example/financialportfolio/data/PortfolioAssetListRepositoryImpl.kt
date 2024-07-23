@@ -16,7 +16,7 @@ class PortfolioAssetListRepositoryImpl @Inject constructor(
         dataSource.addPortfolioAsset(asset)
     }
 
-    override fun deletePortfolioAsset(asset: PortfolioAsset) {
-        dataSource.deletePortfolioAsset(asset)
+    override fun deletePortfolioAsset(id: Int) {
+        dataSource.deletePortfolioAsset(id)
     }
 }

@@ -1,4 +1,4 @@
-package com.example.financialportfolio.presentation.assetList
+package com.example.financialportfolio.presentation.assets
 
 import android.os.Bundle
 import android.view.View
@@ -8,11 +8,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.financialportfolio.R
 import com.example.financialportfolio.databinding.FragmentAssetsListBinding
-import com.example.financialportfolio.presentation.rv.AssetListAdapter
-import com.example.financialportfolio.presentation.rv.delegate.AdapterDelegatesManager
-import com.example.financialportfolio.presentation.rv.delegate.AssetBondListItemAdapterDelegate
-import com.example.financialportfolio.presentation.rv.delegate.AssetCashListItemAdapterDelegate
-import com.example.financialportfolio.presentation.rv.delegate.AssetStockListItemAdapterDelegate
+import com.example.financialportfolio.presentation.assets.rv.AssetListAdapter
+import com.example.financialportfolio.presentation.assets.rv.BondDelegate
+import com.example.financialportfolio.presentation.assets.rv.CashDelegate
+import com.example.financialportfolio.presentation.assets.rv.StockDelegate
+import com.example.financialportfolio.presentation.common.rv.AdapterDelegatesManager
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,21 +31,21 @@ class AssetListFragment : Fragment(R.layout.fragment_assets_list) {
         val adapter = AssetListAdapter(
             items = listOf(),
             delegatesManager = AdapterDelegatesManager(
-                AssetCashListItemAdapterDelegate {
+                CashDelegate {
                     Toast.makeText(
                         context,
                         "Cash item clicked",
                         Toast.LENGTH_SHORT
                     ).show()
                 },
-                AssetBondListItemAdapterDelegate {
+                BondDelegate {
                     Toast.makeText(
                         context,
                         "Bond item clicked",
                         Toast.LENGTH_SHORT
                     ).show()
                 },
-                AssetStockListItemAdapterDelegate {
+                StockDelegate {
                     Toast.makeText(
                         context,
                         "Stock item clicked",

@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/assetsListFragment"
-        android:name="com.example.financialportfolio.presentation.assetList.AssetListFragment"
+        android:name="com.example.financialportfolio.presentation.assets.AssetListFragment"
         android:label="Assets List"
         tools:layout="@layout/fragment_assets_list" />
     <fragment

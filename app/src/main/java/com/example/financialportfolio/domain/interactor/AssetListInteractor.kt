@@ -12,4 +12,8 @@ class AssetListInteractor @Inject constructor(
     fun getAssetList(): List<Asset> {
         return assetListRepository.getAssets()
     }
+
+    fun getAsset(id: Int): Asset {
+        return assetListRepository.getAsset(id)
+    }
 }

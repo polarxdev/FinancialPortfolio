@@ -7,9 +7,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.financialportfolio.R
 import com.example.financialportfolio.databinding.FragmentPortfolioBinding
-import com.example.financialportfolio.presentation.rv.PortfolioAssetListAdapter
-import com.example.financialportfolio.presentation.rv.delegate.AdapterDelegatesManager
-import com.example.financialportfolio.presentation.rv.delegate.PortfolioAssetListItemAdapterDelegate
+import com.example.financialportfolio.presentation.common.rv.AdapterDelegatesManager
+import com.example.financialportfolio.presentation.portfolio.rv.PortfolioAssetDelegate
+import com.example.financialportfolio.presentation.portfolio.rv.PortfolioAssetListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,10 +26,10 @@ class PortfolioFragment : Fragment(R.layout.fragment_portfolio) {
         val adapter = PortfolioAssetListAdapter(
             items = listOf(),
             delegatesManager = AdapterDelegatesManager(
-                PortfolioAssetListItemAdapterDelegate { model, menuItem ->
+                PortfolioAssetDelegate { model, menuItem ->
                     when (menuItem.itemId) {
                         R.id.action_delete -> {
-                            viewModel.deletePortfolioAsset(model)
+                            viewModel.deletePortfolioAsset(model.id.toInt())
                         }
                     }
                 }
@@ -38,9 +38,9 @@ class PortfolioFragment : Fragment(R.layout.fragment_portfolio) {
 
         binding.portfolioAssetList.adapter = adapter
 
-        viewModel.portfolioAssetList.observe(viewLifecycleOwner) { assets ->
-            assets?.let {
-                adapter.submitItems(it)
+        viewModel.portfolioAssetList.observe(viewLifecycleOwner) { portfolioAssets ->
+            portfolioAssets?.let {
+                adapter.submitItems(portfolioAssets)
             }
         }
 

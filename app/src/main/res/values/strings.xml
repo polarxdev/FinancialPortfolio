@@ -13,4 +13,7 @@
     <string name="settings">Settings</string>
     <string name="your_settings">Your settings</string>
     <string name="delete">Delete</string>
+    <string name="purchase_date">Purchase date</string>
+    <string name="purchase_price">Purchase price</string>
+    <string name="current_price">Current price</string>
 </resources>

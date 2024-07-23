@@ -1,11 +1,11 @@
-package com.example.financialportfolio.presentation.rv
+package com.example.financialportfolio.presentation.portfolio.rv
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.financialportfolio.domain.entity.Asset
+import com.example.financialportfolio.presentation.model.PortfolioAssetView
 
-class AssetDiffUtilCallback(
-    private val oldList: List<Asset>,
-    private val newList: List<Asset>
+class PortfolioAssetDiffUtilCallback(
+    private val oldList: List<PortfolioAssetView>,
+    private val newList: List<PortfolioAssetView>
 ) : DiffUtil.Callback() {
 
     override fun getOldListSize() = oldList.size
@@ -13,7 +13,7 @@ class AssetDiffUtilCallback(
     override fun getNewListSize() = newList.size
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
-        oldList[oldItemPosition].id == newList[newItemPosition].id
+        oldList[oldItemPosition].name == newList[newItemPosition].name
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
         oldList[oldItemPosition] == newList[newItemPosition]

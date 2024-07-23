@@ -1,4 +1,4 @@
-package com.example.financialportfolio.presentation.rv.delegate
+package com.example.financialportfolio.presentation.assets.rv
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.financialportfolio.R
 import com.example.financialportfolio.domain.entity.Asset
 import com.example.financialportfolio.domain.entity.Cash
-import com.example.financialportfolio.presentation.rv.AssetCashViewHolder
+import com.example.financialportfolio.presentation.common.rv.AdapterDelegate
 
-class AssetCashListItemAdapterDelegate(
+class CashDelegate(
     private val onClick: (Asset) -> Unit
 ) : AdapterDelegate<Asset> {
     override fun isForViewType(items: List<Asset>, position: Int): Boolean {
