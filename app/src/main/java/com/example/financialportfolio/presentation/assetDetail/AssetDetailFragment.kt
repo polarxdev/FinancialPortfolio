@@ -13,7 +13,6 @@ import com.example.financialportfolio.domain.entity.Asset
 import com.example.financialportfolio.domain.entity.Bond
 import com.example.financialportfolio.domain.entity.Cash
 import com.example.financialportfolio.domain.entity.Stock
-
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,25 +27,33 @@ class AssetDetailFragment : Fragment(R.layout.fragment_asset_detail) {
 
         val args: AssetDetailFragmentArgs by navArgs()
         val id = args.Id
-        try{
-            val asset = viewModel.getAssetById(id.dec())
-            bindInfo(asset)
-        }catch (e: Exception){
-            Toast.makeText(context, "ssss", Toast.LENGTH_SHORT).show()
+
+        try {
+            viewModel.loadAssetById(id.dec())
+        } catch (e: IllegalArgumentException) {
+            Toast.makeText(context, "Invalid ID", Toast.LENGTH_SHORT).show()
             findNavController().navigateUp()
         }
+        viewModel.asset.observe(viewLifecycleOwner, { asset ->
+            asset?.let {
+                bindInfo(it)
+            } ?: run {
+                Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+                findNavController().navigateUp()
+            }
+        })
 
         binding.backIcon.setOnClickListener {
             findNavController().navigateUp()
         }
     }
 
-    fun bindInfo(model: Asset){
-        with(binding){
+    private fun bindInfo(model: Asset) {
+        with(binding) {
             name.text = model.name
             countryValue.text = model.meta.country
             sectorValue.text = model.meta.sector
-            when(model){
+            when (model) {
                 is Cash -> {
                     valueType.setText(R.string.currency)
                     value.text = model.currency

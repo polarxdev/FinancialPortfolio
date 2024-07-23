@@ -1,4 +1,4 @@
-package com.example.financialportfolio.data
+package com.example.financialportfolio.data.datasource.defaults
 
 import com.example.financialportfolio.domain.entity.AssetMeta
 import com.example.financialportfolio.domain.entity.Bond
