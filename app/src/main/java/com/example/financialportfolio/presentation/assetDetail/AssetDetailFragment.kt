@@ -28,12 +28,8 @@ class AssetDetailFragment : Fragment(R.layout.fragment_asset_detail) {
         val args: AssetDetailFragmentArgs by navArgs()
         val id = args.Id
 
-        try {
-            viewModel.loadAssetById(id.dec())
-        } catch (e: IllegalArgumentException) {
-            Toast.makeText(context, "Invalid ID", Toast.LENGTH_SHORT).show()
-            findNavController().navigateUp()
-        }
+        viewModel.loadAssetById(id.dec())
+
         viewModel.asset.observe(viewLifecycleOwner, { asset ->
             asset?.let {
                 bindInfo(it)
@@ -42,6 +38,16 @@ class AssetDetailFragment : Fragment(R.layout.fragment_asset_detail) {
                 findNavController().navigateUp()
             }
         })
+
+        viewModel.toastMessage.observe(
+            viewLifecycleOwner, { message ->
+                message?.let {
+                    Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+                    viewModel.onToastShown()
+                    findNavController().navigateUp()
+                }
+            }
+        )
 
         binding.backIcon.setOnClickListener {
             findNavController().navigateUp()

@@ -20,6 +20,5 @@
     <string name="currency">Currency:</string>
     <string name="ticker">Ticker:</string>
     <string name="maturity_date">Maturity date:</string>
-    <string name="your_settings">Your settings</string>
     <string name="delete">Delete</string>
 </resources>
