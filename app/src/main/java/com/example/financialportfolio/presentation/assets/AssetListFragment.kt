@@ -2,7 +2,6 @@ package com.example.financialportfolio.presentation.assets
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -32,25 +31,22 @@ class AssetListFragment : Fragment(R.layout.fragment_assets_list) {
             items = listOf(),
             delegatesManager = AdapterDelegatesManager(
                 CashDelegate {
-                    Toast.makeText(
-                        context,
-                        "Cash item clicked",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    findNavController().navigate(
+                        AssetListFragmentDirections
+                            .actionAssetsListFragmentToAssetDetailFragment(it.id)
+                    )
                 },
                 BondDelegate {
-                    Toast.makeText(
-                        context,
-                        "Bond item clicked",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    findNavController().navigate(
+                        AssetListFragmentDirections
+                            .actionAssetsListFragmentToAssetDetailFragment(it.id)
+                    )
                 },
                 StockDelegate {
-                    Toast.makeText(
-                        context,
-                        "Stock item clicked",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    findNavController().navigate(
+                        AssetListFragmentDirections
+                            .actionAssetsListFragmentToAssetDetailFragment(it.id)
+                    )
                 }
             )
         )

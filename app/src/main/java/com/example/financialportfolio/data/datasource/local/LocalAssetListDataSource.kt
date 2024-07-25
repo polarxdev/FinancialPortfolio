@@ -10,7 +10,7 @@ class LocalAssetListDataSource @Inject constructor() : AssetListDataSource {
         return DefaultAssetsList.getAssetsList()
     }
 
-    override fun getAsset(id: Int): Asset {
-        return DefaultAssetsList.getAsset(id)
+    override fun getAssetById(id: Int): Asset {
+        return DefaultAssetsList.getAssetById(id)
     }
 }

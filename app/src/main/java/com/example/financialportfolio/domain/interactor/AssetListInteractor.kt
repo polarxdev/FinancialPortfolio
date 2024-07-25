@@ -13,7 +13,7 @@ class AssetListInteractor @Inject constructor(
         return assetListRepository.getAssets()
     }
 
-    fun getAsset(id: Int): Asset {
-        return assetListRepository.getAsset(id)
+    fun getAssetById(id: Int): Asset {
+        return assetListRepository.getAssetById(id)
     }
 }

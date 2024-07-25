@@ -25,7 +25,11 @@
         android:id="@+id/assetsListFragment"
         android:name="com.example.financialportfolio.presentation.assets.AssetListFragment"
         android:label="Assets List"
-        tools:layout="@layout/fragment_assets_list" />
+        tools:layout="@layout/fragment_assets_list" >
+        <action
+            android:id="@+id/action_assetsListFragment_to_assetDetailFragment"
+            app:destination="@id/assetDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/portfolioFragment"
         android:name="com.example.financialportfolio.presentation.portfolio.PortfolioFragment"
@@ -36,4 +40,12 @@
         android:name="com.example.financialportfolio.presentation.settings.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/assetDetailFragment"
+        android:name="com.example.financialportfolio.presentation.assetDetail.AssetDetailFragment"
+        android:label="fragment_asset_detail"
+        tools:layout="@layout/fragment_asset_detail" >
+        <argument android:name="Id"
+            app:argType="integer" />
+    </fragment>
 </navigation>

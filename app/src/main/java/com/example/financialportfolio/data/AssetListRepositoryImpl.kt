@@ -13,7 +13,7 @@ class AssetListRepositoryImpl @Inject constructor(
         return dataSource.getAssets()
     }
 
-    override fun getAsset(id: Int): Asset {
-        return dataSource.getAsset(id)
+    override fun getAssetById(id: Int): Asset {
+        return dataSource.getAssetById(id)
     }
 }

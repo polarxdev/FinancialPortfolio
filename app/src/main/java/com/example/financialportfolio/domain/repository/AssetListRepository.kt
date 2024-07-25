@@ -4,5 +4,5 @@ import com.example.financialportfolio.domain.entity.Asset
 
 interface AssetListRepository {
     fun getAssets(): List<Asset>
-    fun getAsset(id: Int): Asset
+    fun getAssetById(id: Int): Asset
 }

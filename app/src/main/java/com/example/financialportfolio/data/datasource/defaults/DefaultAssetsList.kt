@@ -73,7 +73,7 @@ object DefaultAssetsList {
 
     fun getAssetsList() = assetsList
 
-    fun getAsset(id: Int): Asset {
+    fun getAssetById(id: Int): Asset {
         return assetsList.find { it.id == id } ?: throw IllegalArgumentException("No such asset")
     }
 }
