@@ -71,4 +71,5 @@ object DefaultAssetsList {
     )
 
     fun getAssetsList() = assetsList
+    fun getAssetById(id: Int) = assetsList.get(id)
 }
