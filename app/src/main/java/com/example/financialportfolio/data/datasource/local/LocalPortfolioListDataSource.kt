@@ -14,7 +14,7 @@ class LocalPortfolioListDataSource @Inject constructor() : PortfolioAssetListDat
         DefaultPortfolioAssetsList.addPortfolioAsset(asset)
     }
 
-    override fun deletePortfolioAsset(asset: PortfolioAsset) {
-        DefaultPortfolioAssetsList.deletePortfolioAsset(asset)
+    override fun deletePortfolioAsset(id: Int) {
+        DefaultPortfolioAssetsList.deletePortfolioAsset(id)
     }
 }

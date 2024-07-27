@@ -27,7 +27,8 @@ object DefaultPortfolioAssetsList {
         portfolioAssetsList.add(asset)
     }
 
-    fun deletePortfolioAsset(asset: PortfolioAsset) {
-        portfolioAssetsList.remove(asset)
+    fun deletePortfolioAsset(id: Int) {
+        val portfolioAssetToDelete = portfolioAssetsList.first { it.id == id }
+        portfolioAssetsList.remove(portfolioAssetToDelete)
     }
 }
