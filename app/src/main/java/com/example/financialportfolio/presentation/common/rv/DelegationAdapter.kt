@@ -1,4 +1,4 @@
-package com.example.financialportfolio.presentation.rv.delegate
+package com.example.financialportfolio.presentation.common.rv
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
