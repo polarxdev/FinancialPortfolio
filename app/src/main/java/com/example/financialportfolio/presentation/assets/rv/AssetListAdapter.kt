@@ -1,9 +1,9 @@
-package com.example.financialportfolio.presentation.rv
+package com.example.financialportfolio.presentation.assets.rv
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.financialportfolio.domain.entity.Asset
-import com.example.financialportfolio.presentation.rv.delegate.AdapterDelegatesManager
-import com.example.financialportfolio.presentation.rv.delegate.DelegationAdapter
+import com.example.financialportfolio.presentation.common.rv.AdapterDelegatesManager
+import com.example.financialportfolio.presentation.common.rv.DelegationAdapter
 
 class AssetListAdapter(
     delegatesManager: AdapterDelegatesManager<Asset>,

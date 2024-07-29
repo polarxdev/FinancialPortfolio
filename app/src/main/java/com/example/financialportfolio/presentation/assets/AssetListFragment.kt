@@ -2,17 +2,17 @@ package com.example.financialportfolio.presentation.assetList
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.financialportfolio.R
 import com.example.financialportfolio.databinding.FragmentAssetsListBinding
-import com.example.financialportfolio.presentation.rv.AssetListAdapter
-import com.example.financialportfolio.presentation.rv.delegate.AdapterDelegatesManager
-import com.example.financialportfolio.presentation.rv.delegate.AssetBondListItemAdapterDelegate
-import com.example.financialportfolio.presentation.rv.delegate.AssetCashListItemAdapterDelegate
-import com.example.financialportfolio.presentation.rv.delegate.AssetStockListItemAdapterDelegate
+import com.example.financialportfolio.presentation.assets.AssetListViewModel
+import com.example.financialportfolio.presentation.assets.rv.AssetListAdapter
+import com.example.financialportfolio.presentation.assets.rv.BondDelegate
+import com.example.financialportfolio.presentation.assets.rv.CashDelegate
+import com.example.financialportfolio.presentation.assets.rv.StockDelegate
+import com.example.financialportfolio.presentation.common.rv.AdapterDelegatesManager
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,34 +31,31 @@ class AssetListFragment : Fragment(R.layout.fragment_assets_list) {
         val adapter = AssetListAdapter(
             items = listOf(),
             delegatesManager = AdapterDelegatesManager(
-                AssetCashListItemAdapterDelegate {
-                    Toast.makeText(
-                        context,
-                        "Cash item clicked",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                CashDelegate {
+                    findNavController().navigate(
+                        AssetListFragmentDirections
+                            .actionAssetsListFragmentToAssetDetailFragment(it.id)
+                    )
                 },
-                AssetBondListItemAdapterDelegate {
-                    Toast.makeText(
-                        context,
-                        "Bond item clicked",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                BondDelegate {
+                    findNavController().navigate(
+                        AssetListFragmentDirections
+                            .actionAssetsListFragmentToAssetDetailFragment(it.id)
+                    )
                 },
-                AssetStockListItemAdapterDelegate {
-                    Toast.makeText(
-                        context,
-                        "Stock item clicked",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                StockDelegate {
+                    findNavController().navigate(
+                        AssetListFragmentDirections
+                            .actionAssetsListFragmentToAssetDetailFragment(it.id)
+                    )
                 }
             )
         )
 
         recyclerView.adapter = adapter
 
-        viewModel.model.observe(viewLifecycleOwner) { assets ->
-            adapter.submitItems(assets)
+        viewModel.assetList.observe(viewLifecycleOwner) { assets ->
+            assets?.let { adapter.submitItems(assets) }
         }
 
         binding.backIcon.setOnClickListener {

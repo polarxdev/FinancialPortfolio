@@ -1,5 +1,6 @@
-package com.example.financialportfolio.data
+package com.example.financialportfolio.data.datasource.defaults
 
+import com.example.financialportfolio.domain.entity.Asset
 import com.example.financialportfolio.domain.entity.AssetMeta
 import com.example.financialportfolio.domain.entity.Bond
 import com.example.financialportfolio.domain.entity.Cash
@@ -71,4 +72,8 @@ object DefaultAssetsList {
     )
 
     fun getAssetsList() = assetsList
+
+    fun getAssetById(id: Int): Asset {
+        return assetsList.find { it.id == id } ?: throw IllegalArgumentException("No such asset")
+    }
 }
