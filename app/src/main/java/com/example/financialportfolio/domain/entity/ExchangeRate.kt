@@ -1,12 +1,23 @@
 package com.example.financialportfolio.domain.entity
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class ExchangeRate(
-    @SerializedName("Cur_ID") val id: Int = 0,
-    @SerializedName("Date") val date: String = "",
-    @SerializedName("Cur_Abbreviation") val abbreviation: String = "",
-    @SerializedName("Cur_Scale") val scale: Int = 0,
-    @SerializedName("Cur_Name") val name: String = "",
-    @SerializedName("Cur_OfficialRate") val rate: Double = 0.0
+    @field:Json(name = "Cur_ID")
+    val id: Int = 0,
+
+    @field:Json(name = "Date")
+    val date: String = "",
+
+    @field:Json(name = "Cur_Abbreviation")
+    val abbreviation: String = "",
+
+    @field:Json(name = "Cur_Scale")
+    val scale: Int = 0,
+
+    @field:Json(name = "Cur_Name")
+    val name: String = "",
+
+    @field:Json(name = "Cur_OfficialRate")
+    val rate: Double = 0.0
 )
