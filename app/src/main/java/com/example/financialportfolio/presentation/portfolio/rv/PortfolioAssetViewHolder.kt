@@ -12,14 +12,12 @@ class PortfolioAssetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVie
     private val binding: ItemPortfolioAssetBinding = ItemPortfolioAssetBinding.bind(itemView)
     fun bind(model: PortfolioAssetView, onMenuItemClick: (PortfolioAssetView, MenuItem) -> Unit) {
         with(binding) {
-            model.let {
                 name.text = model.name
                 currentPrice.text = model.currentPrice
                 purchaseDate.text = model.purchaseDate
                 purchasePrice.text = model.purchasePrice
                 menu.setOnClickListener { view ->
                     showPopupMenu(view, model, onMenuItemClick)
-                }
             }
         }
     }

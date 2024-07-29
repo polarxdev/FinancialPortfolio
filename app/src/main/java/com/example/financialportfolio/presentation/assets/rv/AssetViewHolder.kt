@@ -13,14 +13,12 @@ class AssetCashViewHolder(itemView: View) : ViewHolder(itemView) {
     private val binding: ItemAssetCashBinding = ItemAssetCashBinding.bind(itemView)
     fun bind(model: Cash, onClick: (Cash) -> Unit) {
         with(binding) {
-            model.let {
-                name.text = model.name
-                currency.text = model.currency
-                country.text = model.meta.country
-                sector.text = model.meta.sector
+            name.text = model.name
+            currency.text = model.currency
+            country.text = model.meta.country
+            sector.text = model.meta.sector
 
-                itemView.setOnClickListener { onClick(model) }
-            }
+            itemView.setOnClickListener { onClick(model) }
         }
     }
 }
@@ -29,14 +27,12 @@ class AssetBondViewHolder(itemView: View) : ViewHolder(itemView) {
     private val binding: ItemAssetBondBinding = ItemAssetBondBinding.bind(itemView)
     fun bind(model: Bond, onClick: (Bond) -> Unit) {
         with(binding) {
-            model.let {
                 name.text = model.name
                 maturityDate.text = model.maturityDate.toString()
                 country.text = model.meta.country
                 sector.text = model.meta.sector
 
                 itemView.setOnClickListener { onClick(model) }
-            }
         }
     }
 }
@@ -45,14 +41,12 @@ class AssetStockViewHolder(itemView: View) : ViewHolder(itemView) {
     private val binding: ItemAssetStockBinding = ItemAssetStockBinding.bind(itemView)
     fun bind(model: Stock, onClick: (Stock) -> Unit) {
         with(binding) {
-            model.let {
                 name.text = model.name
                 ticker.text = model.ticker
                 country.text = model.meta.country
                 sector.text = model.meta.sector
 
                 itemView.setOnClickListener { onClick(model) }
-            }
         }
     }
 }
