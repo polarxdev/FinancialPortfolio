@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.financialportfolio.databinding.FragmentBottomsheetBinding
-import com.example.financialportfolio.presentation.settings.SharedViewModel
+import com.example.financialportfolio.presentation.settings.SettingsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class BottomSheetFragment : BottomSheetDialogFragment() {
@@ -17,7 +17,7 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
     private lateinit var itemAdapter: BottomSheetListAdapter
     private lateinit var recyclerView: RecyclerView
     private var list = ArrayList<String>()
-    private val sharedViewModel: SharedViewModel by activityViewModels()
+    private val settingsViewModel: SettingsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +34,7 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
         list = arrayListOf("BYN", "CNY", "RUB", "EUR", "USD")
 
         itemAdapter = BottomSheetListAdapter(list, requireContext()) { currency ->
-            sharedViewModel.selectCurrency(currency)
+            settingsViewModel.selectCurrency(currency)
             dismiss()
         }
         recyclerView = binding.bottomsheetRv

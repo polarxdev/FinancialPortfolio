@@ -17,7 +17,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     private val binding get() = _binding!!
 
     private lateinit var sharedPreferences: SharedPreferences
-    private val sharedViewModel: SharedViewModel by activityViewModels()
+    private val settingsViewModel: SettingsViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,7 +38,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             findNavController().navigateUp()
         }
 
-        sharedViewModel.selectedCurrency.observe(viewLifecycleOwner) { currency ->
+        settingsViewModel.selectedCurrency.observe(viewLifecycleOwner) { currency ->
             binding.currencyTv.text = currency
             saveCurrencyToPreferences(currency)
         }

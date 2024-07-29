@@ -42,6 +42,6 @@
     </fragment>
     <fragment
         android:id="@+id/bottomsheetFragment"
-        android:name="com.example.financialportfolio.presentation.settings.bottomsheet.BottomsheetFragment"
+        android:name="com.example.financialportfolio.presentation.settings.bottomsheet.BottomSheetFragment"
         android:label="BottomsheetFragment" />
 </navigation>
