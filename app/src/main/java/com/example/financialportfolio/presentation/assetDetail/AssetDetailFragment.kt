@@ -28,26 +28,26 @@ class AssetDetailFragment : Fragment(R.layout.fragment_asset_detail) {
         val args: AssetDetailFragmentArgs by navArgs()
         val id = args.Id
 
-        viewModel.loadAssetById(id.dec())
+        viewModel.loadAssetById(id)
 
-        viewModel.asset.observe(viewLifecycleOwner, { asset ->
+        viewModel.asset.observe(viewLifecycleOwner) { asset ->
             asset?.let {
                 bindInfo(it)
             } ?: run {
                 Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
                 findNavController().navigateUp()
             }
-        })
+        }
 
         viewModel.toastMessage.observe(
-            viewLifecycleOwner, { message ->
-                message?.let {
-                    Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-                    viewModel.onToastShown()
-                    findNavController().navigateUp()
-                }
+            viewLifecycleOwner
+        ) { message ->
+            message?.let {
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+                viewModel.onToastShown()
+                findNavController().navigateUp()
             }
-        )
+        }
 
         binding.backIcon.setOnClickListener {
             findNavController().navigateUp()

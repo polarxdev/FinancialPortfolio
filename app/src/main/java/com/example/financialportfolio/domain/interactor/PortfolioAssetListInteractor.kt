@@ -13,8 +13,8 @@ class PortfolioAssetListInteractor @Inject constructor(
         portfolioAssetsListRepository.addPortfolioAsset(asset)
     }
 
-    fun deletePortfolioAsset(asset: PortfolioAsset) {
-        portfolioAssetsListRepository.deletePortfolioAsset(asset)
+    fun deletePortfolioAsset(id: Int) {
+        portfolioAssetsListRepository.deletePortfolioAsset(id)
     }
 
     fun getPortfolioAssetList(): List<PortfolioAsset> {

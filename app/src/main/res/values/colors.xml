@@ -5,4 +5,5 @@
     <color name="background">#2E3560</color>
     <color name="text_color">#BDEDFF</color>
     <color name="frame_color">#8B575757</color>
+    <color name="light_purple">#222745</color>
 </resources>
