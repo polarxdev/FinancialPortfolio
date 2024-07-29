@@ -48,14 +48,44 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/montserrat_medium"
-        android:text="@string/your_settings"
+        android:text="@string/default_currency"
         android:textColor="@color/text_color"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/currency_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/text_color"
+        android:background="@drawable/settings_item_bg"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/change_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <android.widget.Button
+        android:id="@+id/change_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/list_btn_shape"
+        android:fontFamily="@font/montserrat_bold"
+        android:drawableLeft="@drawable/currency_exchange"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="10dp"
+        android:text="Change"
+        android:textColor="@color/background"
+        app:layout_constraintStart_toEndOf="@+id/currency_tv"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

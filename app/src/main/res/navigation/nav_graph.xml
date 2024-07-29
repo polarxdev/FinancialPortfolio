@@ -35,5 +35,13 @@
         android:id="@+id/settingsFragment"
         android:name="com.example.financialportfolio.presentation.settings.SettingsFragment"
         android:label="SettingsFragment"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_bottomsheetFragment"
+            app:destination="@id/bottomsheetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bottomsheetFragment"
+        android:name="com.example.financialportfolio.presentation.settings.bottomsheet.BottomsheetFragment"
+        android:label="BottomsheetFragment" />
 </navigation>
