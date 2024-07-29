@@ -1,4 +1,4 @@
-package com.example.financialportfolio.presentation.assetList
+package com.example.financialportfolio.presentation.assets
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,11 +1,11 @@
-package com.example.financialportfolio.presentation.rv
+package com.example.financialportfolio.presentation.assets.rv
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.financialportfolio.domain.entity.PortfolioAsset
+import com.example.financialportfolio.domain.entity.Asset
 
-class PortfolioAssetDiffUtilCallback(
-    private val oldList: List<PortfolioAsset>,
-    private val newList: List<PortfolioAsset>
+class AssetDiffUtilCallback(
+    private val oldList: List<Asset>,
+    private val newList: List<Asset>
 ) : DiffUtil.Callback() {
 
     override fun getOldListSize() = oldList.size

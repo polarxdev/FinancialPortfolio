@@ -1,18 +1,18 @@
-package com.example.financialportfolio.presentation.rv.delegate
+package com.example.financialportfolio.presentation.portfolio.rv
 
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.financialportfolio.R
-import com.example.financialportfolio.domain.entity.PortfolioAsset
-import com.example.financialportfolio.presentation.rv.PortfolioAssetViewHolder
+import com.example.financialportfolio.presentation.common.rv.AdapterDelegate
+import com.example.financialportfolio.presentation.model.PortfolioAssetView
 
-class PortfolioAssetListItemAdapterDelegate(
-    private val onMenuItemClick: (PortfolioAsset, MenuItem) -> Unit
-) : AdapterDelegate<PortfolioAsset> {
-    override fun isForViewType(items: List<PortfolioAsset>, position: Int): Boolean {
-        return items[position] is PortfolioAsset
+class PortfolioAssetDelegate(
+    private val onMenuItemClick: (PortfolioAssetView, MenuItem) -> Unit
+) : AdapterDelegate<PortfolioAssetView> {
+    override fun isForViewType(items: List<PortfolioAssetView>, position: Int): Boolean {
+        return items[position] is PortfolioAssetView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup): PortfolioAssetViewHolder {
@@ -28,7 +28,7 @@ class PortfolioAssetListItemAdapterDelegate(
 
     override fun onBindViewHolder(
         holder: RecyclerView.ViewHolder,
-        items: List<PortfolioAsset>,
+        items: List<PortfolioAssetView>,
         position: Int
     ) {
         (holder as PortfolioAssetViewHolder).bind(items[position], onMenuItemClick)
