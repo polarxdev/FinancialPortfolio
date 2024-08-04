@@ -7,13 +7,21 @@ import com.example.financialportfolio.data.datasource.AssetListDataSource
 import com.example.financialportfolio.data.datasource.PortfolioAssetListDataSource
 import com.example.financialportfolio.data.datasource.local.LocalAssetListDataSource
 import com.example.financialportfolio.data.datasource.local.LocalPortfolioListDataSource
+import com.example.financialportfolio.data.exchangerate.ExchangeRateApiService
 import com.example.financialportfolio.domain.repository.AssetListRepository
 import com.example.financialportfolio.domain.repository.ExchangeRateRepository
 import com.example.financialportfolio.domain.repository.PortfolioAssetsListRepository
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -49,4 +57,30 @@ interface DataModule {
     fun bindExchangeRateRepository(
         repositoryImpl: ExchangeRateRepositoryImpl
     ): ExchangeRateRepository
+
+    @Provides
+    @Singleton
+    fun provideExchangeRateApiService(): ExchangeRateApiService {
+
+        val BASE_URL = "https://api.nbrb.by/exrates/rates/"
+        val contentType = "application/json".toMediaType()
+
+        val okHttpClient by lazy {
+            OkHttpClient.Builder()
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
+                .build()
+        }
+
+        val retrofit by lazy {
+            Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .client(okHttpClient)
+                .addConverterFactory(Json.asConverterFactory(contentType))
+                .build()
+        }
+
+        return retrofit.create(ExchangeRateApiService::class.java)
+    }
 }

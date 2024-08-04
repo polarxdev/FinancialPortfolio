@@ -1,23 +1,25 @@
 package com.example.financialportfolio.domain.entity
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ExchangeRate(
-    @field:Json(name = "Cur_ID")
+    @SerialName("Cur_ID")
     val id: Int = 0,
 
-    @field:Json(name = "Date")
+    @SerialName("Date")
     val date: String = "",
 
-    @field:Json(name = "Cur_Abbreviation")
+    @SerialName("Cur_Abbreviation")
     val abbreviation: String = "",
 
-    @field:Json(name = "Cur_Scale")
+    @SerialName("Cur_Scale")
     val scale: Int = 0,
 
-    @field:Json(name = "Cur_Name")
+    @SerialName("Cur_Name")
     val name: String = "",
 
-    @field:Json(name = "Cur_OfficialRate")
+    @SerialName("Cur_OfficialRate")
     val rate: Double = 0.0
 )
