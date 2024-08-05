@@ -1,4 +1,4 @@
-package com.example.financialportfolio.domain.entity
+package com.example.financialportfolio.data.exchangerate
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

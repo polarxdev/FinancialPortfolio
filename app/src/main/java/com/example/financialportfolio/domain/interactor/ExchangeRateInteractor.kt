@@ -1,6 +1,6 @@
 package com.example.financialportfolio.domain.interactor
 
-import com.example.financialportfolio.domain.entity.ExchangeRate
+import com.example.financialportfolio.data.exchangerate.ExchangeRate
 import com.example.financialportfolio.domain.repository.ExchangeRateRepository
 import javax.inject.Inject
 
