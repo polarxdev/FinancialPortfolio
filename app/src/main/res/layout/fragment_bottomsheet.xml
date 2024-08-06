@@ -7,11 +7,11 @@
     android:background="@drawable/bottomsheet_bg">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/choose_curr_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Choose currency"
+        android:text="@string/choose_currency"
         android:textSize="20sp"
         android:layout_gravity="center"
         android:fontFamily="@font/montserrat_bold"

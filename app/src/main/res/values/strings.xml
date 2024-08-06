@@ -26,4 +26,6 @@
     <string name="purchase_date">Purchase date</string>
     <string name="purchase_price">Purchase price</string>
     <string name="current_price">Current price</string>
+    <string name="change">Change</string>
+    <string name="choose_currency">Choose currency</string>
 </resources>

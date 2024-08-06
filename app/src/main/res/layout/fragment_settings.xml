@@ -82,7 +82,7 @@
         android:drawableLeft="@drawable/currency_exchange"
         android:paddingHorizontal="30dp"
         android:paddingVertical="10dp"
-        android:text="Change"
+        android:text="@string/change"
         android:textColor="@color/background"
         app:layout_constraintStart_toEndOf="@+id/currency_tv"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
