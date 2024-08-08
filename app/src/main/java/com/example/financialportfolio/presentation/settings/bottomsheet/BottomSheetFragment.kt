@@ -1,13 +1,15 @@
 package com.example.financialportfolio.presentation.settings.bottomsheet
 
+import SettingsViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.financialportfolio.databinding.FragmentBottomsheetBinding
-import com.example.financialportfolio.presentation.settings.SettingsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.coroutines.launch
 
 class BottomSheetFragment : BottomSheetDialogFragment() {
 
@@ -31,7 +33,9 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
         list = arrayListOf("BYN", "CNY", "RUB", "EUR", "USD")
 
         val itemAdapter = BottomSheetListAdapter(list, requireContext()) { currency ->
-            settingsViewModel.selectCurrency(currency)
+            lifecycleScope.launch {
+                settingsViewModel.selectCurrency(currency)
+            }
             dismiss()
         }
         val recyclerView = binding.bottomsheetRv

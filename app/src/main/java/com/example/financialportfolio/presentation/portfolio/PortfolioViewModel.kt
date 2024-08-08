@@ -3,33 +3,43 @@ package com.example.financialportfolio.presentation.portfolio
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.financialportfolio.domain.entity.PortfolioAsset
+import androidx.lifecycle.viewModelScope
+import com.example.financialportfolio.domain.interactor.ExchangeRateInteractor
 import com.example.financialportfolio.domain.interactor.PortfolioAssetListInteractor
+import com.example.financialportfolio.domain.mapper.toView
+import com.example.financialportfolio.presentation.model.PortfolioAssetView
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class PortfolioViewModel @Inject constructor(
-    private val portfolioAssetListInteractor: PortfolioAssetListInteractor
+    private val portfolioAssetListInteractor: PortfolioAssetListInteractor,
+    private val exchangeRateInteractor: ExchangeRateInteractor
 ) : ViewModel() {
-    private val _portfolioAssetList = MutableLiveData<List<PortfolioAsset>>()
-    val portfolioAssetList: LiveData<List<PortfolioAsset>> get() = _portfolioAssetList
+
+    private val _portfolioAssetList = MutableLiveData<List<PortfolioAssetView>>()
+    val portfolioAssetList: LiveData<List<PortfolioAssetView>> get() = _portfolioAssetList
 
     init {
         loadPortfolioAssets()
     }
 
     private fun loadPortfolioAssets() {
-        _portfolioAssetList.value = portfolioAssetListInteractor.getPortfolioAssetList()
+        viewModelScope.launch {
+            val portfolioAssets =
+                portfolioAssetListInteractor.getPortfolioAssetList().map { portfolioAsset ->
+                    portfolioAsset.toView(
+                        exchangeRateInteractor,
+                        "USD"
+                    )
+                }
+            _portfolioAssetList.postValue(portfolioAssets)
+        }
     }
 
-    fun addPortfolioAsset(asset: PortfolioAsset) {
-        portfolioAssetListInteractor.addPortfolioAsset(asset)
-        loadPortfolioAssets()
-    }
-
-    fun deletePortfolioAsset(asset: PortfolioAsset) {
-        portfolioAssetListInteractor.deletePortfolioAsset(asset)
+    fun deletePortfolioAsset(id: Int) {
+        portfolioAssetListInteractor.deletePortfolioAsset(id)
         loadPortfolioAssets()
     }
 }
