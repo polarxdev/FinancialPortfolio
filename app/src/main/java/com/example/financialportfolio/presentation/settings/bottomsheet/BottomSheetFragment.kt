@@ -1,22 +1,18 @@
 package com.example.financialportfolio.presentation.settings.bottomsheet
 
-import SettingsViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import com.example.financialportfolio.databinding.FragmentBottomsheetBinding
+import com.example.financialportfolio.presentation.settings.SettingsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.coroutines.launch
 
-class BottomSheetFragment : BottomSheetDialogFragment() {
-
+class BottomSheetFragment(private val settingsViewModel: SettingsViewModel) :
+    BottomSheetDialogFragment() {
     private var _binding: FragmentBottomsheetBinding? = null
     private val binding get() = _binding!!
-    private var list = ArrayList<String>()
-    private val settingsViewModel: SettingsViewModel by activityViewModels()
+    private val list = settingsViewModel.getSettingsList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,12 +26,8 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        list = arrayListOf("BYN", "CNY", "RUB", "EUR", "USD")
-
-        val itemAdapter = BottomSheetListAdapter(list, requireContext()) { currency ->
-            lifecycleScope.launch {
-                settingsViewModel.selectCurrency(currency)
-            }
+        val itemAdapter = BottomSheetListAdapter(list) { currency ->
+            settingsViewModel.selectCurrency(currency)
             dismiss()
         }
         val recyclerView = binding.bottomsheetRv

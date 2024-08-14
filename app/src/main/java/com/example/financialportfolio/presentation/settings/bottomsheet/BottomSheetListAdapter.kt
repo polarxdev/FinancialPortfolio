@@ -1,6 +1,5 @@
 package com.example.financialportfolio.presentation.settings.bottomsheet
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +7,6 @@ import com.example.financialportfolio.R
 
 class BottomSheetListAdapter(
     private var list: ArrayList<String>,
-    private val context: Context,
     private val onItemClicked: (String) -> Unit
 ) : RecyclerView.Adapter<BottomSheetViewHolder>() {
 
