@@ -4,25 +4,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.financialportfolio.R
+import com.example.financialportfolio.databinding.ItemSettingsBinding
 
 class BottomSheetListAdapter(
-    private var list: ArrayList<String>,
+    private var list: List<String>,
     private val onItemClicked: (String) -> Unit
 ) : RecyclerView.Adapter<BottomSheetViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BottomSheetViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_settings, parent, false)
-        return BottomSheetViewHolder(view)
+        val binding = ItemSettingsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return BottomSheetViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: BottomSheetViewHolder, position: Int) {
-        val item = list[position]
-        holder.item.text = item
-
-        holder.itemView.setOnClickListener {
-            onItemClicked(item)
-        }
+        holder.bind(position, list, onItemClicked)
     }
 
     override fun getItemCount(): Int {

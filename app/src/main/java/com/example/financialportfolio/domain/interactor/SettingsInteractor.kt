@@ -10,15 +10,15 @@ import javax.inject.Singleton
 class SettingsInteractor @Inject constructor(
     private val settingsRepository: SettingsRepository
 ) {
-    fun getSettingsList(): ArrayList<String> {
+    fun getSettingsList(): List<String> {
         return settingsRepository.getSettingsList()
     }
 
-    fun readCurrencyFromPreferences(context: Context): Flow<String> {
-        return settingsRepository.readCurrencyFromPreferences(context)
+    fun readCurrencyFromPreferences(): Flow<String> {
+        return settingsRepository.readCurrencyFromPreferences()
     }
 
-    fun saveCurrencyToPreferences(currency: String, context: Context) {
-        return settingsRepository.saveCurrencyToPreferences(currency, context)
+    fun saveCurrencyToPreferences(currency: String) {
+        return settingsRepository.saveCurrencyToPreferences(currency)
     }
 }

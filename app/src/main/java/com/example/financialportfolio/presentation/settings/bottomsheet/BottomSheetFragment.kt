@@ -4,15 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.example.financialportfolio.databinding.FragmentBottomsheetBinding
 import com.example.financialportfolio.presentation.settings.SettingsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class BottomSheetFragment(private val settingsViewModel: SettingsViewModel) :
-    BottomSheetDialogFragment() {
+class BottomSheetFragment: BottomSheetDialogFragment() {
     private var _binding: FragmentBottomsheetBinding? = null
     private val binding get() = _binding!!
-    private val list = settingsViewModel.getSettingsList()
+    private val settingsViewModel: SettingsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,12 +28,18 @@ class BottomSheetFragment(private val settingsViewModel: SettingsViewModel) :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val itemAdapter = BottomSheetListAdapter(list) { currency ->
-            settingsViewModel.selectCurrency(currency)
-            dismiss()
-        }
-        val recyclerView = binding.bottomsheetRv
-        recyclerView.adapter = itemAdapter
+        settingsViewModel.getSettingsList()
+        settingsViewModel.settingsList.observe(viewLifecycleOwner, Observer {list ->
+            val itemAdapter = BottomSheetListAdapter(list) { currency ->
+                settingsViewModel.selectCurrency(currency)
+                dismiss()
+            }
+            binding.bottomsheetRv.adapter = itemAdapter
+        })
+    }
+
+    companion object {
+        const val TAG = "CurrencyBottomSheetFragment"
     }
 
     override fun onDestroyView() {

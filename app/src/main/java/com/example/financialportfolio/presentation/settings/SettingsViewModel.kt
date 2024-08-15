@@ -17,23 +17,34 @@ class SettingsViewModel @Inject constructor(
     private val _selectedCurrency = MutableLiveData<String>()
     val selectedCurrency: LiveData<String> get() = _selectedCurrency
 
+    private val _savedCurrency = MutableLiveData<String>()
+    val savedCurrency: LiveData<String> get() = _savedCurrency
+
+    private val _settingsList = MutableLiveData<List<String>>()
+    val settingsList: LiveData<List<String>> get() = _settingsList
+
     fun selectCurrency(currency: String) {
         _selectedCurrency.value = currency
     }
 
-    fun getSettingsList(): ArrayList<String> = settingsInteractor.getSettingsList()
-
-    fun readCurrencyFromPreferences(context: Context) {
+    fun getSettingsList() {
         viewModelScope.launch {
-            settingsInteractor.readCurrencyFromPreferences(context).collect { value ->
-                _selectedCurrency.postValue(value)
+            val list = settingsInteractor.getSettingsList()
+            _settingsList.postValue(list)
+        }
+    }
+
+    fun readCurrencyFromPreferences() {
+        viewModelScope.launch {
+            settingsInteractor.readCurrencyFromPreferences().collect { value ->
+                _savedCurrency.postValue(value)
             }
         }
     }
 
-    fun saveCurrencyToPreferences(currency: String, context: Context) {
+    fun saveCurrencyToPreferences(currency: String) {
         viewModelScope.launch {
-            return@launch settingsInteractor.saveCurrencyToPreferences(currency, context)
+            settingsInteractor.saveCurrencyToPreferences(currency)
         }
     }
 }

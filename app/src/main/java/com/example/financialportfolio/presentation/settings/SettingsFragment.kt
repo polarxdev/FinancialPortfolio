@@ -1,8 +1,10 @@
 package com.example.financialportfolio.presentation.settings
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.financialportfolio.R
@@ -15,22 +17,22 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
-    private val settingsViewModel: SettingsViewModel by viewModels()
+    private val settingsViewModel: SettingsViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = FragmentSettingsBinding.bind(view)
 
-        settingsViewModel.selectedCurrency.observe(viewLifecycleOwner) { currency ->
+        settingsViewModel.savedCurrency.observe(viewLifecycleOwner) { currency ->
             binding.currencyTv.text = currency
         }
 
-        settingsViewModel.readCurrencyFromPreferences(requireContext())
+        settingsViewModel.readCurrencyFromPreferences()
 
         binding.changeBtn.setOnClickListener {
-            val bottomSheetFragment = BottomSheetFragment(settingsViewModel)
-            bottomSheetFragment.show(childFragmentManager, bottomSheetFragment.tag)
+            val bottomSheetFragment = BottomSheetFragment()
+            bottomSheetFragment.show(childFragmentManager, BottomSheetFragment.TAG)
         }
 
         binding.backIcon.setOnClickListener {
@@ -39,7 +41,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
         settingsViewModel.selectedCurrency.observe(viewLifecycleOwner) { currency ->
             binding.currencyTv.text = currency
-            settingsViewModel.saveCurrencyToPreferences(currency, requireContext())
+            settingsViewModel.saveCurrencyToPreferences(currency)
         }
     }
 

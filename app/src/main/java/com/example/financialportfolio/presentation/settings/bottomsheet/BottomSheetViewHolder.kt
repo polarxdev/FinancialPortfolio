@@ -1,12 +1,15 @@
 package com.example.financialportfolio.presentation.settings.bottomsheet
 
-import android.view.View
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.financialportfolio.databinding.ItemSettingsBinding
 
-class BottomSheetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val binding: ItemSettingsBinding = ItemSettingsBinding.bind(itemView)
+class BottomSheetViewHolder(
+    private val binding: ItemSettingsBinding
+) : RecyclerView.ViewHolder(binding.root) {
 
-    val item: TextView = binding.currencyName
+    fun bind(position: Int, list: List<String>, onItemClicked: (String) -> Unit) {
+        val item = list[position]
+        binding.currencyName.text = item
+        binding.root.setOnClickListener { onItemClicked(item) }
+    }
 }
