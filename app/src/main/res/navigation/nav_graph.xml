@@ -41,14 +41,11 @@
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings" >
         <action
-            android:id="@+id/action_settingsFragment_to_bottomsheetFragment"
-            app:destination="@id/bottomsheetFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/bottomsheetFragment"
-        android:name="com.example.financialportfolio.presentation.settings.bottomsheet.BottomSheetFragment"
-        android:label="BottomsheetFragment" />
-        tools:layout="@layout/fragment_settings" />
+            android:id="@+id/action_settingsFragment_to_settingsBottomSheetFragment"
+            app:destination="@id/settingsBottomSheetFragment" />
+    </fragment><![CDATA[
+    tools:layout="@layout/fragment_settings" />
+    ]]>
     <fragment
         android:id="@+id/assetDetailFragment"
         android:name="com.example.financialportfolio.presentation.assetDetail.AssetDetailFragment"
@@ -57,4 +54,8 @@
         <argument android:name="Id"
             app:argType="integer" />
     </fragment>
+    <dialog
+        android:id="@+id/settingsBottomSheetFragment"
+        android:name="com.example.financialportfolio.presentation.settings.bottomsheet.SettingsBottomSheetFragment"
+        android:label="SettingsBottomSheetFragment" />
 </navigation>

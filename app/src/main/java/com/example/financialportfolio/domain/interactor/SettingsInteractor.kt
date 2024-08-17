@@ -1,6 +1,6 @@
 package com.example.financialportfolio.domain.interactor
 
-import android.content.Context
+import com.example.financialportfolio.domain.entity.Constants
 import com.example.financialportfolio.domain.repository.SettingsRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -11,14 +11,14 @@ class SettingsInteractor @Inject constructor(
     private val settingsRepository: SettingsRepository
 ) {
     fun getSettingsList(): List<String> {
-        return settingsRepository.getSettingsList()
+        return Constants.CURRENCY_LIST
     }
 
-    fun readCurrencyFromPreferences(): Flow<String> {
-        return settingsRepository.readCurrencyFromPreferences()
+    suspend fun readCurrency(): Flow<String> {
+        return settingsRepository.readCurrency()
     }
 
-    fun saveCurrencyToPreferences(currency: String) {
-        return settingsRepository.saveCurrencyToPreferences(currency)
+    fun saveCurrency(currency: String) {
+        return settingsRepository.saveCurrency(currency)
     }
 }

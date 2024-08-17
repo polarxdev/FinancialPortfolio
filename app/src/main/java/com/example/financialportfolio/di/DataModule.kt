@@ -3,7 +3,6 @@ package com.example.financialportfolio.di
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.financialportfolio.data.AssetListRepositoryImpl
 import com.example.financialportfolio.data.ExchangeRateRepositoryImpl
@@ -126,12 +125,6 @@ interface DataModule {
         @Singleton
         fun provideDataStore(@ApplicationContext context: Context): DataStore<Preferences> {
             return context.dataStore
-        }
-
-        @Provides
-        @Singleton
-        fun provideCurrencyKey(): Preferences.Key<String> {
-            return stringPreferencesKey("currency")
         }
     }
 }
