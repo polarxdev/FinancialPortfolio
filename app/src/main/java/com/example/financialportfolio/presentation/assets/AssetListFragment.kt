@@ -1,4 +1,4 @@
-package com.example.financialportfolio.presentation.assetList
+package com.example.financialportfolio.presentation.assets
 
 import android.os.Bundle
 import android.view.View
@@ -7,7 +7,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.financialportfolio.R
 import com.example.financialportfolio.databinding.FragmentAssetsListBinding
-import com.example.financialportfolio.presentation.assets.AssetListViewModel
 import com.example.financialportfolio.presentation.assets.rv.AssetListAdapter
 import com.example.financialportfolio.presentation.assets.rv.BondDelegate
 import com.example.financialportfolio.presentation.assets.rv.CashDelegate
