@@ -1,5 +1,6 @@
 package com.example.financialportfolio.presentation.portfolio
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -27,19 +28,29 @@ class PortfolioViewModel @Inject constructor(
 
     private fun loadPortfolioAssets() {
         viewModelScope.launch {
-            val portfolioAssets =
-                portfolioAssetListInteractor.getPortfolioAssetList().map { portfolioAsset ->
-                    portfolioAsset.toView(
-                        exchangeRateInteractor,
-                        "USD"
-                    )
-                }
-            _portfolioAssetList.postValue(portfolioAssets)
+            try {
+                val portfolioAssets =
+                    portfolioAssetListInteractor.getPortfolioAssetList().map { portfolioAsset ->
+                        portfolioAsset.toView(
+                            exchangeRateInteractor,
+                            "USD"
+                        )
+                    }
+                _portfolioAssetList.postValue(portfolioAssets)
+            } catch (e: Exception) {
+                Log.e("PortfolioViewModel", "Error loading portfolio assets", e)
+            }
         }
     }
 
     fun deletePortfolioAsset(id: Int) {
-        portfolioAssetListInteractor.deletePortfolioAsset(id)
-        loadPortfolioAssets()
+        viewModelScope.launch {
+            try {
+                portfolioAssetListInteractor.deletePortfolioAsset(id)
+                loadPortfolioAssets()
+            } catch (e: Exception) {
+                Log.e("PortfolioViewModel", "Error deleting portfolio asset", e)
+            }
+        }
     }
 }

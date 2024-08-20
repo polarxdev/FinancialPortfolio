@@ -1,23 +1,30 @@
-package com.example.financialportfolio.data
+package com.example.financialportfolio.data.database
 
-import com.example.financialportfolio.data.database.PortfolioTableDataSource
 import com.example.financialportfolio.data.database.entity.PortfolioTable
 import com.example.financialportfolio.domain.entity.PortfolioAsset
 import com.example.financialportfolio.domain.repository.PortfolioAssetsListRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class PortfolioAssetListRepositoryImpl @Inject constructor(
+class PortfolioTableImpl @Inject constructor(
     private val dataSource: PortfolioTableDataSource
 ) : PortfolioAssetsListRepository {
     override suspend fun getPortfolioAssets(): List<PortfolioAsset> {
-        return dataSource.getPortfolioAssets()
+        return withContext(Dispatchers.IO) {
+            dataSource.getPortfolioAssets()
+        }
     }
 
     override suspend fun addPortfolioAsset(asset: PortfolioTable) {
-        dataSource.addPortfolioAsset(asset)
+        return withContext(Dispatchers.IO) {
+            dataSource.addPortfolioAsset(asset)
+        }
     }
 
     override suspend fun deletePortfolioAsset(id: Int) {
-        dataSource.deletePortfolioAsset(id)
+        return withContext(Dispatchers.IO) {
+            dataSource.deletePortfolioAsset(id)
+        }
     }
 }

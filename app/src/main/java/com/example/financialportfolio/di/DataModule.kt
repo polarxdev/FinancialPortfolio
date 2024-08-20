@@ -6,18 +6,14 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.financialportfolio.data.AssetListRepositoryImpl
 import com.example.financialportfolio.data.ExchangeRateRepositoryImpl
-import com.example.financialportfolio.data.PortfolioAssetListRepositoryImpl
 import com.example.financialportfolio.data.SettingsRepositoryImpl
 import com.example.financialportfolio.data.datasource.AssetListDataSource
-import com.example.financialportfolio.data.datasource.PortfolioAssetListDataSource
 import com.example.financialportfolio.data.datasource.SettingsDataSource
 import com.example.financialportfolio.data.datasource.local.LocalAssetListDataSource
-import com.example.financialportfolio.data.datasource.local.LocalPortfolioListDataSource
 import com.example.financialportfolio.data.datasource.local.LocalSettingsDataSource
 import com.example.financialportfolio.data.exchangerate.ExchangeRateApiService
 import com.example.financialportfolio.domain.repository.AssetListRepository
 import com.example.financialportfolio.domain.repository.ExchangeRateRepository
-import com.example.financialportfolio.domain.repository.PortfolioAssetsListRepository
 import com.example.financialportfolio.domain.repository.SettingsRepository
 import dagger.Binds
 import dagger.Module
@@ -48,18 +44,6 @@ interface DataModule {
     fun bindAssetListDataSource(
         dataSourceImpl: LocalAssetListDataSource
     ): AssetListDataSource
-
-    @Binds
-    @Singleton
-    fun bindPortfolioAssetListRepository(
-        repositoryImpl: PortfolioAssetListRepositoryImpl
-    ): PortfolioAssetsListRepository
-
-    @Binds
-    @Singleton
-    fun bindPortfolioAssetListDataSource(
-        dataSourceImpl: LocalPortfolioListDataSource
-    ): PortfolioAssetListDataSource
 
     @Binds
     @Singleton
