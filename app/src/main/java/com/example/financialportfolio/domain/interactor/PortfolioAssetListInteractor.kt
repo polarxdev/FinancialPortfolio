@@ -10,7 +10,7 @@ import javax.inject.Singleton
 class PortfolioAssetListInteractor @Inject constructor(
     private val portfolioAssetsListRepository: PortfolioAssetsListRepository
 ) {
-    suspend fun addPortfolioAsset(asset: PortfolioTable) {
+    suspend fun addPortfolioAsset(asset: PortfolioAsset) {
         portfolioAssetsListRepository.addPortfolioAsset(asset)
     }
 

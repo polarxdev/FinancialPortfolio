@@ -17,7 +17,7 @@ class LocalPortfolioTableDataSource @Inject constructor(
         }
     }
 
-    override suspend fun addPortfolioAsset(asset: PortfolioTable) {
+    override suspend fun addPortfolioAsset(asset: PortfolioAsset) {
         return withContext(Dispatchers.IO) {
             dao.insertAsset(asset)
         }

@@ -36,7 +36,7 @@ class PortfolioViewModel @Inject constructor(
                             "USD"
                         )
                     }
-                _portfolioAssetList.postValue(portfolioAssets)
+                _portfolioAssetList.value = portfolioAssets
             } catch (e: Exception) {
                 Log.e("PortfolioViewModel", "Error loading portfolio assets", e)
             }

@@ -10,7 +10,7 @@ import com.example.financialportfolio.domain.entity.PortfolioAsset
 @Dao
 interface PortfolioDao {
     @Insert
-    fun insertAsset(asset: PortfolioTable)
+    fun insertAssetTable(asset: PortfolioTable)
 
     @Query("DELETE FROM portfolio_table WHERE id = :id")
     fun deleteAsset(id: Int)
@@ -19,7 +19,6 @@ interface PortfolioDao {
     fun getAllAssetsTables(): List<PortfolioTable>
 
     fun getAllAssets(): List<PortfolioAsset> {
-        Log.d("PortfolioDao", "GetAssets")
         return getAllAssetsTables().map { portfolioTable ->
             PortfolioAsset(
                 id = portfolioTable.id,
@@ -29,5 +28,15 @@ interface PortfolioDao {
                 currentPrice = portfolioTable.currentPrice
             )
         }
+    }
+
+    fun insertAsset(asset: PortfolioAsset) {
+        insertAssetTable(PortfolioTable(
+            id = asset.id,
+            asset = asset.asset,
+            purchaseDate = asset.purchaseDate,
+            purchasePrice = asset.purchasePrice,
+            currentPrice = asset.currentPrice
+        ))
     }
 }
