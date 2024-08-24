@@ -2,7 +2,6 @@ package com.example.financialportfolio.data.database.local
 
 import com.example.financialportfolio.data.database.PortfolioTableDataSource
 import com.example.financialportfolio.data.database.dao.PortfolioDao
-import com.example.financialportfolio.data.database.entity.PortfolioTable
 import com.example.financialportfolio.domain.entity.PortfolioAsset
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -1,6 +1,5 @@
 package com.example.financialportfolio.data.database
 
-import com.example.financialportfolio.data.database.entity.PortfolioTable
 import com.example.financialportfolio.domain.entity.PortfolioAsset
 import com.example.financialportfolio.domain.repository.PortfolioAssetsListRepository
 import kotlinx.coroutines.Dispatchers
