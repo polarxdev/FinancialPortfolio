@@ -1,5 +1,7 @@
 package com.example.financialportfolio.domain.entity
 
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import java.time.LocalDate
 
 data class AssetMeta(
@@ -8,8 +10,10 @@ data class AssetMeta(
 )
 
 open class Asset(
+    @ColumnInfo("asset_id")
     open val id: Int,
     open val name: String,
+    @Embedded
     open val meta: AssetMeta
 )
 

@@ -6,15 +6,15 @@ import com.example.financialportfolio.domain.entity.PortfolioAsset
 import javax.inject.Inject
 
 class LocalPortfolioListDataSource @Inject constructor() : PortfolioAssetListDataSource {
-    override fun getPortfolioAssets(): List<PortfolioAsset> {
+    override suspend fun getPortfolioAssets(): List<PortfolioAsset> {
         return DefaultPortfolioAssetsList.getPortfolioAssetsList()
     }
 
-    override fun addPortfolioAsset(asset: PortfolioAsset) {
+    override suspend fun addPortfolioAsset(asset: PortfolioAsset) {
         DefaultPortfolioAssetsList.addPortfolioAsset(asset)
     }
 
-    override fun deletePortfolioAsset(id: Int) {
+    override suspend fun deletePortfolioAsset(id: Int) {
         DefaultPortfolioAssetsList.deletePortfolioAsset(id)
     }
 }

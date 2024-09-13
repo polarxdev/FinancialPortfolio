@@ -3,7 +3,7 @@ package com.example.financialportfolio.domain.repository
 import com.example.financialportfolio.domain.entity.PortfolioAsset
 
 interface PortfolioAssetsListRepository {
-    fun getPortfolioAssets(): List<PortfolioAsset>
-    fun addPortfolioAsset(asset: PortfolioAsset)
-    fun deletePortfolioAsset(id: Int)
+    suspend fun getPortfolioAssets(): List<PortfolioAsset>
+    suspend fun addPortfolioAsset(asset: PortfolioAsset)
+    suspend fun deletePortfolioAsset(id: Int)
 }

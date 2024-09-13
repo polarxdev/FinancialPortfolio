@@ -9,15 +9,15 @@ import javax.inject.Singleton
 class PortfolioAssetListInteractor @Inject constructor(
     private val portfolioAssetsListRepository: PortfolioAssetsListRepository
 ) {
-    fun addPortfolioAsset(asset: PortfolioAsset) {
+    suspend fun addPortfolioAsset(asset: PortfolioAsset) {
         portfolioAssetsListRepository.addPortfolioAsset(asset)
     }
 
-    fun deletePortfolioAsset(id: Int) {
+    suspend fun deletePortfolioAsset(id: Int) {
         portfolioAssetsListRepository.deletePortfolioAsset(id)
     }
 
-    fun getPortfolioAssetList(): List<PortfolioAsset> {
+    suspend fun getPortfolioAssetList(): List<PortfolioAsset> {
         return portfolioAssetsListRepository.getPortfolioAssets()
     }
 }
